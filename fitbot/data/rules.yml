@@ -1,0 +1,123 @@
+version: "3.1"
+
+rules:
+
+- rule: say hello
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: ask for user name
+  steps:
+  - action: utter_greet
+  - intent: user_sign_up
+  - action: action_reset_slots
+  - action: utter_inform_user_name
+
+- rule: ask for account type
+  steps:
+  - action: utter_inform_user_name
+  - intent: inform_user_name
+  - action: utter_inform_account_type
+
+- rule: ask for user cpf number
+  steps:
+  - action: utter_inform_account_type
+  - intent: inform_account_type
+  - action: utter_inform_user_cpf
+
+- rule: ask for user email
+  steps:
+  - action: utter_inform_user_cpf
+  - intent: inform_user_cpf_number
+  - action: utter_inform_user_email
+
+- rule: ask for user phone number
+  steps:
+  - action: utter_inform_user_email
+  - intent: inform_user_email
+  - action: utter_inform_user_phone
+
+- rule: forward to photo request
+  steps:
+  - action: utter_inform_user_phone
+  - intent: inform_user_phone_number
+  - action: action_request_for_photo
+
+- rule: forward to photo request
+  steps:
+  - action: utter_inform_user_phone
+  - intent: inform_user_phone_number
+  - action: action_request_for_photo
+
+- rule: ask for cpf to enter
+  steps:
+  - action: utter_greet
+  - intent: user_sign_in
+  - action: action_reset_slots
+  - action: utter_inform_user_cpf_login
+
+# - rule: ask for cpf to enter
+#   steps:
+#   - action: utter_inform_user_cpf_login
+#   - intent: inform_user_cpf_number
+#   - action: action_login_with_cpf
+#   - action: utter_inform_login_code
+
+- rule: ask for cpf to enter
+  steps:
+  - action: utter_inform_user_cpf_login
+  - intent: inform_user_cpf_number
+  - action: action_login_with_cpf
+  - action: login_cpf_form
+  - active_loop: login_cpf_form
+#  - action: utter_inform_login_code
+
+- rule: ask for login code to enter
+  steps:
+  - action: utter_inform_login_code
+  - intent: inform_login_code
+  - action: action_check_login_code
+  - action: utter_inform_available_options
+
+- rule: inform available options
+  steps:
+  - intent: ask_available_options
+  - action: utter_inform_available_options
+
+- rule: check for login code
+  steps:
+  - intent: inform_login_code
+  - action: action_check_login_code
+
+- rule: sing up new account
+  steps:
+  - intent: user_sign_up
+  - action: action_reset_slots
+  - action: utter_inform_user_name
+
+- rule: sing in existed account
+  steps:
+  - intent: user_sign_in
+  - action: action_reset_slots
+  - action: utter_inform_user_cpf_login
+
+- rule: check for balance
+  steps:
+  - intent: operation_check_balance
+  - action: action_query_balance
+
+# - rule: take off cpf form
+#   steps:
+#   - action: login_cpf_form
+#   - active_loop: login_cpf_form
+#   - intent: greet
+#   - action: utter_greet
+#   - action: action_deactivate_loop
+#   - active_loop: null
+#   - action: action_reset_slots

@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+    <!-- <link href="{{ url_for('static', path='styles/confirmar.css') }}" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/static/styles/confirmar.css"/>
+  </head>
+  <body>
+    <div class="card">
+      <div class="circle">
+        <i class="checkmark">✓</i>
+      </div>
+      <h1>Sucesso!</h1> 
+      <p>Parabéns {{ nome }}, sua conta foi criada!</p>
+      <p>Você já pode efetuar operações pelo o nosso chat.</p>
+      <br>
+      <a href="https://t.me/fitbot_cybercamp_bot">
+        <!-- <img src="{{ url_for('static',path='images/telegram_qrcode.png') }}"> -->
+        <img src="/static/images/telegram_qrcode.png">
+      </a>
+    </div>
+  </body>
+</html>

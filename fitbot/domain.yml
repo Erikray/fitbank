@@ -1,0 +1,133 @@
+version: '3.1'
+intents:
+- ask_available_options
+- goodbye
+- greet
+- inform_account_type
+- inform_login_code
+- inform_user_cpf_number
+- inform_user_email
+- inform_user_name
+- inform_user_phone_number
+- user_sign_in
+- user_sign_up
+- operation_check_balance
+- operation_transfer_money
+entities:
+- login_code
+- user_cpf_number
+- user_name
+- user_phone_number
+- user_email
+- account_type
+- account_id
+slots:
+  account_type:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: account_type
+  user_name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_name
+  user_cpf_number:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_cpf_number
+  user_email:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_email
+  user_phone_number:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_phone_number
+  login_code:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: login_code
+  account_id:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: account_id
+  valid_cpf:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_cpf_number
+responses:
+  utter_greet:
+  - text: Olá! Eu sou a Charlotte 🤖 sua assistente virtual, escolha uma das opções para continuar.
+    buttons:
+    - text: Sou novo aqui
+      payload: Sou novo aqui
+    - text: Já tenho conta
+      payload: Já tenho conta
+  utter_goodbye:
+  - text: Até mais!
+  - text: Foi um prazer te atender!
+  utter_inform_user_name:
+  - text: Vamos começar! De início escreva o seu nome.
+  utter_inform_account_type:
+  - text: A sua conta é para Pessoa Física ou Jurídica?
+    buttons:
+    - text: Pessoa Física
+      payload: Pessoa Física
+    - text: Pessoa Jurídica
+      payload: Pessoa Jurídica
+  utter_inform_user_cpf:
+  - text: Escreva o seu número de CPF XXX.XXX.XXX-XX 
+  utter_inform_user_cpf_login:
+  - text: Seja bem vindo de volta, para acessar insira o seu CPF XXX.XXX.XXX-XX
+  utter_inform_user_email:
+  - text: Me passe o seu email 
+  utter_inform_user_phone:
+  - text: Insira o seu número de celular com DDD (XX)9XXXXXXXX
+  utter_inform_login_code:
+  - text: Um código de confirmação foi gerado e enviado a o seu email cadastrado, insira aqui para que a gente possa prosseguir. 
+  utter_inform_available_options:
+  - text: Seja bem vindo! o que vamos fazer agora? 🤖
+    buttons:
+    - text: Consultar saldo
+      payload: Consultar saldo
+    - text: Fazer um pix
+      payload: Fazer um pix
+    - text: Pagar uma conta
+      payload: Pagar uma conta
+actions:
+- action_check_login_code
+- action_login_with_cpf
+- action_request_for_photo
+- action_reset_slots
+- action_query_balance
+- utter_greet
+- utter_inform_account_type
+- utter_inform_login_code
+- utter_inform_user_cpf
+- utter_inform_user_cpf_login
+- utter_inform_user_email
+- utter_inform_user_name
+- utter_inform_user_phone
+forms:
+  login_cpf_form:
+    required_slots:
+    - valid_cpf
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

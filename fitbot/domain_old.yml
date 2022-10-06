@@ -1,0 +1,122 @@
+version: '3.1'
+intents:
+- ask_available_options
+- goodbye
+- greet
+- inform_account_type
+- inform_login_code
+- inform_user_cpf_number
+- inform_user_email
+- inform_user_name
+- inform_user_phone_number
+- operation_check_balance
+- operation_transfer_money
+- user_sign_in
+- user_sign_up
+entities:
+- user_cpf_number
+- user_phone_number
+- user_email
+- account_type
+- user_name
+- login_code
+- account_id
+slots:
+  account_type:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: account_type
+  user_name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_name
+  user_cpf_number:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_cpf_number
+  user_email:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_email
+  user_phone_number:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_phone_number
+  login_code:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: login_code
+  account_id:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: account_id
+responses:
+  utter_greet:
+  - text: Olá! Eu sou o fitbot seu assistente virtual, que bom ver você aqui! 😁
+    buttons:
+    - text: Sou novo aqui
+      payload: Sou novo aqui
+    - text: Já tenho conta
+      payload: Já tenho conta
+  utter_goodbye:
+  - text: Até mais!
+  - text: Foi um prazer te atender!
+  utter_inform_user_name:
+  - text: Para começar me informa o seu nome
+  utter_inform_account_type:
+  - text: Primeiro me diga qual o tipo de conta que deseja criar
+    buttons:
+    - text: Pessoa Física
+      payload: Pessoa Física
+    - text: Pessoa Jurídica
+      payload: Pessoa Jurídica
+  utter_inform_user_cpf:
+  - text: Me informa o número do CPF
+  utter_inform_user_cpf_login:
+  - text: Para entrar, preciso que me informe o número do CPF
+  utter_inform_user_email:
+  - text: Me informa o endereço de email
+  utter_inform_user_phone:
+  - text: Me informa o número de telefone
+  utter_inform_login_code:
+  - text: Me informa o código enviado pelo o email
+  utter_inform_available_options:
+  - text: Por aqui, vou conseguir te ajudar nas seguintes operações
+    buttons:
+    - text: Consultar saldo
+      payload: Consultar saldo
+    - text: Fazer um pix
+      payload: Fazer um pix
+    - text: Pagar uma conta
+      payload: Pagar uma conta
+actions:
+- action_check_login_code
+- action_login_with_cpf
+- action_query_balance
+- action_request_for_photo
+- action_reset_slots
+- utter_greet
+- utter_inform_account_type
+- utter_inform_login_code
+- utter_inform_user_cpf
+- utter_inform_user_cpf_login
+- utter_inform_user_email
+- utter_inform_user_name
+- utter_inform_user_phone
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

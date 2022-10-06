@@ -1,0 +1,167 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - Eai
+    - olá
+    - oi
+    - Como vai
+    - Bom dia
+    - Boa noite
+    - boa tarde
+    - Ei
+    - "/start"
+- intent: goodbye
+  examples: |
+    - tchau
+    - valeu
+    - tranquilo
+    - obrigado
+    - obrigada
+    - eh nois
+    - vlw
+    - flw
+    - obg
+- intent: user_sign_up
+  examples: |
+    - sou novo aqui
+    - não tenho conta
+    - não possuo conta
+    - quero criar uma conta
+    - nova conta
+    - Sou novo aqui
+- intent: user_sign_in
+  examples: |
+    - possuo conta
+    - quero entrar
+    - fazer login
+    - acessar minha conta
+    - já tenho acesso
+    - Já tenho conta
+- intent: inform_user_name
+  examples: |
+    - [Carlos Freire](user_name)
+    - [raphael](user_name)
+    - Aqui é o [Jõao](user_name)
+    - meu nome é [Ana Maria](user_name)
+    - é [pedro](user_name)
+    - você fala com o [felipe carvalho](user_name)
+    - [carlos freire](user_name)
+    - [Erik Ray](user_name)
+    - [Eduardo Mendes](user_name)
+    - [Gustavo Caldeira](user_name)
+    - [Marcela da Paz](user_name)
+    - [Lucas Alves](user_name)
+    - [Lucas Jesus](user_name)
+    - [Helena Barros](user_name)
+    - [Enzo Gabriel Cardoso](user_name)
+    - [Vitor Azevedo](user_name)
+    - [Raul Teixeira](user_name)
+    - [Rebeca Rezende](user_name)
+    - [Maria Sophia Barros](user_name)
+    - [Antônio Martins](user_name)
+    - [Murilo Costa](user_name)
+    - [Marina Cardoso](user_name)
+    - [Ryan Almeida](user_name)
+    - [Ana Clara Moura](user_name)
+    - [Yasmin Souza](user_name)
+    - [Vicente da Paz](user_name)
+    - [Isabel Teixeira](user_name)
+    - [Catarina da Conceição](user_name)
+- intent: inform_account_type
+  examples: |
+    - [Pessoa Física](account_type)
+    - [Pessoa Jurídica](account_type)
+    - criar conta [pessoa fisica](account_type)
+    - quero criar uma conta [Pessoa juridica](account_type)
+    - [Pessoa Física](account_type)
+- intent: inform_user_cpf_number
+  examples: |
+    - [893.693.480-50](user_cpf_number)
+    - [15489652365](user_cpf_number)
+    - meu cpf é [17896325856](user_cpf_number)
+    - [123.156.987-00](user_cpf_number)
+    - [785.456.259-14](user_cpf_number)
+    - [050.546.958-25](user_cpf_number)
+- intent: inform_user_email
+  examples: |
+    - [carlos@gmail.com](user_email)
+    - [felipefreitas@hotmail.com](user_email)
+    - meu email é [jose@ufc.br](user_email)
+    - o endereço é [mariaadr@yahoo.com](user_email)
+    - [carlos@gtel.ufc.br](user_email)
+    - [erikray@gmail.com](user_email)
+- intent: inform_user_phone_number
+  examples: |
+    - [(85)98723-2878](user_phone_number)
+    - [50987453625](user_phone_number)
+    - meu número é [80936541298](user_phone_number)
+    - o telefone é [(98)99643-6259](user_phone_number)
+    - [85987232915](user_phone_number)
+    - [(85)98783-1248](user_phone_number)
+- intent: ask_available_options
+  examples: |
+    - quais operações posso fazer
+    - quais as opções
+    - o que eu consigo fazer?
+    - fazer o que?
+    - o que dá para fazer?
+    - o que tá disponível?
+    - o que eu posso fazer?
+    - operações disponíveis
+    - opcoes
+    - operacoes
+    - menu
+    - mostra o que pode fazer
+    - você consegue fazer o que?
+    - serve para que esse bot?
+- intent: inform_login_code
+  examples: |
+    - [15487](login_code)
+    - código de login é [948123](login_code)
+    - número do email [69843](login_code)
+    - recebi [349876](login_code)
+    - [64238](login_code)
+- intent: operation_check_balance
+  examples: |
+    - gostaria de ver meu saldo
+    - quero ver meu saldo
+    - saldo
+    - quanto tem na minha conta
+    - consultar saldo
+    - checar conta
+- intent: operation_transfer_money
+  examples: |
+    - quero mandar [R$100](quant_transfer) para [@jprl](account_id)
+    - transferir para [@lawfulntral](account_id)
+    - mandar [R$100](quant_transfer) reais para [@c_ntrl](account_id)
+    - [@evelyn_hugo](account_id)
+    - transferir [R$2500.45](quant_transfer) para [@annie_c](account_id)
+    - [R$64.89](quant_transfer) reais pra [@billyB](account_id)
+    - fazer transferencia
+    - realizar transferencia
+    - quero transferir
+    - transferencia
+    - mandar dinheiro
+    - transferir
+    - quero fazer uma transferência
+    - quero transferir [R$500](quant_transfer) reais para [@bioss](account_id)
+    - [R$50](quant_transfer) para [@carlos](account_id)
+    - [R$2325,80](quant_transfer) para [@sarah](account_id)
+    - quero transferir [R$6325](quant_transfer) para [@rodrigo](account_id)
+    - [R$25](quant_transfer)
+- regex: account_id
+  examples: |
+    - (?<=^|(?<=[^a-zA-Z0-9-_\.]))(@[A-Za-z]+[A-Za-z0-9-_]+)
+- regex: login_code
+  examples: |
+    - \d{5}
+- regex: user_cpf_number
+  examples: |
+    - [0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}
+- regex: user_email
+  examples: |
+    - /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
+- regex: user_phone_number
+  examples: |
+    - (?<=^|(?<=[^a-zA-Z0-9-_\.]))(\(\d{2}\)[\s-][\s9]\d{4}-\d{4})
